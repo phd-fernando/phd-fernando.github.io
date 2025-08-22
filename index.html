@@ -5,130 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fernando Brito</title>
   <meta name="description" content="Fernando Brito — research, publications, and projects." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%8C%BF%3C/text%3E%3C/svg%3E" />
   <style>
-    :root{
-      --green:#00a656; /* primary */
-      --green-ink:#0a3d24; /* headings */
-      --text:#111; 
-      --muted:#4a4a4a; 
-      --bg:#fff; 
-      --hr:#e6f4eb; 
-      --link:#007a3d;
-      --max:860px;
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+      max-width: 800px;
+      padding: 2rem 1rem;
+      margin-left: auto;
+      margin-right: auto;
     }
-    @media (prefers-color-scheme: dark){
-      :root{ --bg:#0d1510; --text:#f2f7f3; --muted:#b8c8bf; --hr:#12331f; --green:#26d07c; --green-ink:#a8ffcf; --link:#5be0a6; }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
     }
-    html{font-size:16px}
-    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", sans-serif; background:var(--bg); color:var(--text); line-height:1.65}
-    a{color:var(--link); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max); margin:0 auto; padding:2rem 1.25rem}
-    header{padding:2.5rem 0 1.25rem}
-    h1{font-size:2.4rem; line-height:1.1; margin:.2rem 0 .6rem; color:var(--green-ink)}
-    p, li{font-size:1.05rem}
-    .lead{color:var(--muted)}
-    .email{margin-top:.25rem}
-    hr{border:0; height:1px; background:linear-gradient(90deg, transparent, var(--hr), transparent); margin:1.75rem 0}
-    h2{font-size:1.25rem; letter-spacing:.02em; text-transform:uppercase; color:var(--green); margin:0 0 .5rem}
-    ul{list-style:none; padding:0; margin:.25rem 0 0}
-    li{margin-bottom:.6rem}
-    .meta{color:var(--muted); font-size:.98rem}
-    .dot{color:var(--muted)}
-    .small{font-size:.98rem}
-    footer{padding:2rem 0 3rem; color:var(--muted)}
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    p, li {
+      font-size: 1rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 2rem 0;
+    }
+    a {
+      color: #000;
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <h1>Fernando Brito</h1>
-      <p class="lead">I study statistics and workplace safety, with projects at the intersection of labor, technology, and policy. I’m particularly interested in automation’s labor-market effects and the measurement of occupational risk.</p>
-      <p class="email small">Email: <span>fernando[at]example[dot]edu</span></p>
-    </header>
+  <header>
+    <h1>Fernando Brito</h1>
+    <p>I study statistics and workplace safety, with projects at the intersection of labor, technology, and policy.</p>
+    <p>Email: fernando[at]example[dot]edu</p>
+  </header>
 
-    <hr>
+  <hr>
 
-    <section aria-labelledby="pubs">
-      <h2 id="pubs">Publications</h2>
-      <ul>
-        <li>
-          <a href="#">Title of Paper A</a>
-          <span class="meta"> · with Coauthors · 2025. <span class="dot">·</span> Journal Name</span>
-        </li>
-        <li>
-          <a href="#">Title of Paper B</a>
-          <span class="meta"> · with Coauthors · 2024. <span class="dot">·</span> Conference / Proceedings</span>
-        </li>
-        <li>
-          <a href="#">Title of Paper C</a>
-          <span class="meta"> · with Coauthors · 2023. <span class="dot">·</span> Journal Name</span>
-        </li>
-      </ul>
-    </section>
+  <section>
+    <h2>Publications</h2>
+    <ul>
+      <li>Title of Paper A · Journal Name, 2025</li>
+      <li>Title of Paper B · Conference, 2024</li>
+      <li>Title of Paper C · Journal Name, 2023</li>
+    </ul>
+  </section>
 
-    <hr>
+  <hr>
 
-    <section aria-labelledby="wps">
-      <h2 id="wps">Working papers</h2>
-      <ul>
-        <li>
-          <a href="#">Working Paper 1</a>
-          <span class="meta"> · with Coauthors · R&R at Journal</span>
-        </li>
-        <li>
-          <a href="#">Working Paper 2</a>
-          <span class="meta"> · with Coauthors</span>
-        </li>
-      </ul>
-    </section>
+  <section>
+    <h2>Working Papers</h2>
+    <ul>
+      <li>Working Paper 1 · R&R at Journal</li>
+      <li>Working Paper 2</li>
+    </ul>
+  </section>
 
-    <hr>
+  <hr>
 
-    <section aria-labelledby="wip">
-      <h2 id="wip">Selected works in progress</h2>
-      <ul>
-        <li>
-          Project Alpha <span class="meta"> · with Collaborators</span>
-        </li>
-        <li>
-          Project Beta <span class="meta"> · with Collaborators</span>
-        </li>
-      </ul>
-    </section>
+  <section>
+    <h2>Selected Works in Progress</h2>
+    <ul>
+      <li>Project Alpha</li>
+      <li>Project Beta</li>
+    </ul>
+  </section>
 
-    <hr>
+  <hr>
 
-    <section aria-labelledby="otherpubs">
-      <h2 id="otherpubs">Other publications</h2>
-      <ul>
-        <li>
-          <a href="#">Policy Brief X</a> <span class="meta"> · 2025</span>
-        </li>
-        <li>
-          <a href="#">Magazine Article Y</a> <span class="meta"> · 2024</span>
-        </li>
-      </ul>
-    </section>
+  <section>
+    <h2>Links</h2>
+    <p>
+      <a href="https://github.com/fernandobrito">GitHub</a> · 
+      <a href="https://scholar.google.com/">Google Scholar</a> · 
+      <a href="https://orcid.org/">ORCID</a>
+    </p>
+  </section>
 
-    <hr>
+  <footer>
+    <p>© <span id="year"></span> Fernando Brito</p>
+  </footer>
 
-    <section aria-labelledby="links">
-      <h2 id="links">Links</h2>
-      <p class="small">
-        <a href="https://github.com/fernandobrito" target="_blank" rel="noopener">GitHub</a>
-        <span class="dot"> · </span>
-        <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>
-        <span class="dot"> · </span>
-        <a href="https://orcid.org/" target="_blank" rel="noopener">ORCID</a>
-      </p>
-    </section>
-
-    <footer>
-      <p class="small">© <span id="year"></span> Fernando Brito</p>
-    </footer>
-  </main>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
