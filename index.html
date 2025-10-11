@@ -22,122 +22,165 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
   <style>
-  body { background-color:#FFFFFF; color:#222222; }
-  a { color:#1767d0; text-decoration:none; }
-  a:focus, a:hover { color:#f09228; text-decoration:none; }
-  body,td,th { font-family:'Lato', Verdana, Helvetica, sans-serif; font-size:14px; }
-  strong { font-family:'Lato', Verdana, Helvetica, sans-serif; font-size:13px; }
-  heading { display:block; font-family:'Lato', Arial, Helvetica, sans-serif; font-size:24px; font-weight:600; margin:8px 0 12px; }
-  li { color:#f09228; }
-  li span { color:black; }
-  hr { border:0; border-top:1px solid #eee; }
-  img { border-radius:4px; }
+    :root {
+      --fg: #222222;
+      --bg: #ffffff;
+      --link: #1767d0;
+      --link-hover: #f09228;
+      --maxw: 980px;
+    }
 
-  /* --- Show more/less styles --- */
-  .abstract { position: relative; transition: max-height 0.25s ease-in-out; }
-  .abstract.collapsed { max-height: 3em; overflow: hidden; }
-  .abstract.collapsed::after { /* subtle fade at bottom */
-    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3em;
-    background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
-    pointer-events: none;
-  }
-  .toggle-link { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: #1767d0; }
-  .toggle-link:hover, .toggle-link:focus { color: #f09228; }
-  .toggle-wrap { margin-top: 6px; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover, a:focus { color: var(--link-hover); text-decoration: none; }
+
+    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+
+    /* ===== Header (Photo on the right, name + contact on the left) ===== */
+    .site-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+      margin-top: 8px;
+      margin-bottom: 24px; /* Body starts BELOW this header block */
+    }
+    .id-block h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.2;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+    }
+    .id-block p { margin: 0 0 10px 0; }
+    .contact { color: #444; }
+
+    .photo-wrap {
+      width: 180px; /* fixed photo column */
+      height: 180px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    hr { border: 0; border-top: 1px solid #eee; margin: 24px 0; }
+
+    /* ===== Main content ===== */
+    main { display: block; }
+    section { margin: 28px 0; }
+    section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+    }
+
+    /* Lists */
+    ul { padding-left: 20px; }
+    li { color:#f09228; }
+    li span { color:black; }
+
+    /* ===== Abstract show more/less ===== */
+    .abstract { position: relative; transition: max-height 0.25s ease-in-out; }
+    .abstract.collapsed { max-height: 3.2em; overflow: hidden; }
+    .abstract.collapsed::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3.2em;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+      pointer-events: none;
+    }
+    .toggle-link { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: var(--link); }
+    .toggle-link:hover, .toggle-link:focus { color: var(--link-hover); }
+    .toggle-wrap { margin-top: 6px; }
+
+    /* ===== Small screens ===== */
+    @media (max-width: 640px) {
+      .site-header { grid-template-columns: 1fr; }
+      .photo-wrap { width: 140px; height: 140px; }
+    }
   </style>
-
-  <script type="text/javascript" src="js/hidebib.js"></script>
 </head>
 
 <body>
-  <table width="1000" border="0" align="center" cellpadding="20">
-    <tr>
-      <td>
-        <table width="100%" align="left" border="0" cellpadding="10">
-          <tr>
-            <td width="100%" valign="bottom">
-              <p align="center">&nbsp;</p>
-              <p align="left"><font size="6px">Fernando J. Brito-Gonzalez</font></p>
-              <p>
-                I am currently a PhD candidate in the College of Agriculture and Life Sciences at the University of Florida. My research interests include labor economics, Agricultural Economics, and Technological Change. I will be entering the job market this year.
-              </p>
-              
-              <p>Room 2115, McCarthy Hall B, 1676 McCarty Dr, Gainesville, FL 32603<br>
-              Email: f.britogonzalez[at]ufl.edu | Phone: (202) 834-9824</p>
-            </td>
-            <td width="15%"><img src="me.png" width="200" height="200" alt="Fernando Brito headshot"></td>
-          </tr>
-        </table>
+  <header class="container site-header" role="banner">
+    <!-- Left: Name + intro + contact -->
+    <div class="id-block">
+      <h1>Fernando J. Brito-Gonzalez</h1>
+      <p>
+        I am currently a PhD candidate in the College of Agriculture and Life Sciences at the University of Florida. My research interests include labor economics, Agricultural Economics, and Technological Change. I will be entering the job market this year.
+      </p>
+      <p class="contact">
+        Room 2115, McCarthy Hall B, 1676 McCarty Dr, Gainesville, FL 32603<br>
+        Email: <a href="mailto:f.britogonzalez@ufl.edu">f.britogonzalez@ufl.edu</a> &nbsp;|&nbsp; Phone: <a href="tel:+12028349824">(202) 834-9824</a>
+      </p>
+    </div>
 
-        <br>
-        <hr>
+    <!-- Right: Headshot (kept to the side, never pushes body content) -->
+    <div class="photo-wrap" aria-hidden="true">
+      <img src="me.png" alt="Fernando Brito headshot">
+    </div>
+  </header>
 
-        <!-- Education -->
-        <table width="1000" border="0" align="center" cellpadding="1">
-          <td><tr>
-          <table width="75%" align="left" border="0" cellpadding="4">
-          <heading>Education</heading>
-            <tr><td>
-                Ph.D., Food and Resource Economics, University of Florida — Gainesville, FL (expected May 2026)<br>
-                M.Sc., Agricultural &amp; Resource Economics, University of Maryland — College Park, MD (Dec 2020)<br>
-                M.Sc., Applied Economics, University of Chile — Santiago, Chile (May 2015)<br>
-                B.Sc., Industrial Engineering, University of Chile — Santiago, Chile (May 2015)<br>
-            </td></tr>
-          </table>
-          </tr>
-          <tr>
-          <table width="75%" align="left" border="0" cellpadding="1">
-          <heading>Job Market Paper</heading>
-            <tr>
-              <td width="90%" valign="top">
-                <a href="https://fbritogonzalez.github.io/">Artificial Intelligence (AI) and Agricultural Employment</a><br>
-                  with Gulcan Onel, Jared Gars, and Conner Mullally. Submitted to the <i>American Journal of Agricultural Economics (AJAE)</i>
-                
-                <!-- Abstract with Show more/less -->
-                <div id="abstract" class="abstract" aria-live="polite">
-                  <p>
-                    <i>Abstract.</i> We quantify how artificial intelligence (AI) innovations affect U.S. agricultural employment. Using 2003–2023 U.S. Patent and Trademark Office records, we construct a measure of agriculture’s exposure to AI by classifying AI patents and mapping them to subsectors through Cooperative Patent Classification (CPC) and North American Industry Classification System (NAICS) concordances. A shift–share design with an instrumental variable approach interacts national AI innovation trends with county-level lagged employment shares. Estimates indicate that AI exposure raises employment in crop production (NAICS 111) by 10.6% and in animal production (NAICS 112) by 6.8%, relative to mean employment levels in each subsector. Decomposing AI based on its underlying function reveals heterogeneity in employment effects. Execution-oriented AI (hardware and automation) reduces overall agricultural employment (NAICS 11) by 6.9%, while cognition-oriented AI (decision-support) and perception-oriented AI (sensing) increase employment (4.3% and 6%, respectively). These domain-specific patterns are consistent across crop and animal subsectors, with stronger employment effects in crop agriculture (-12.8% for execution-, 9.1% for cognition-, and 10% for perception-oriented AI) than in animal agriculture (-4.5% for execution-, and 7.8% for perception-oriented AI, respectively). Results show that AI does not uniformly displace farm labor; instead, its effects depend on technological complementarities and task reallocation. By uncovering domain-specific dynamics, this study demonstrates how targeted AI innovations can augment agricultural employment, informing policies that support skill upgrading and diffusion of complementary technologies.
-                  </p>
-                </div>
-                <div class="toggle-wrap">
-                  <button id="toggle-abstract" class="toggle-link" aria-controls="abstract" aria-expanded="false">Show more</button>
-                </div>
-                <!-- /Abstract with Show more/less -->
-                
-              </td></tr>
-          </table>
-          </tr>
-          <tr>
-          <table width="75%" align="left" border="0" cellpadding="1">
-          <heading>Research and Work in Progress</heading>
-            <tr>
-              <td width="75%" valign="top">
-                <p>
-                  <a href="https://scholar.google.cl/citations?view_op=view_citation&hl=en&user=XP7X0IQAAAAJ&citation_for_view=XP7X0IQAAAAJ:u-x6o8ySG0sC">Sensing, Thinking, Doing: AI’s Growing Role on the Farm—and What It Means for Farm Work</a><br>
-                  with Gulcan Onel, Jared Gars, and Conner Mullally. <i>Choices</i>, 40(3), 2025.
-                </p>
-                <p>
-                  <a>The Role of Agricultural Robotics and the Industry Dependence on the H-2A Temporary Agricultural Work Program</a> with Gulcan Onel, Jared Gars, Conner Mullally.
-                </p>
-                <p>
-                  <a>Do Increases in the Minimum Wage Skew Task Demand Toward Automation? Evidence from the H-2A Temporary Agricultural Work Program</a> with Gulcan Onel, Jared Gars, Conner Mullally.
-                </p>
-                <p>
-                  <a>Is it time to update the NAWS questionnaire?</a> with Gulcan Onel.
-                </p>
-              </td>
-            </tr>
-          </table>
-          </tr>
-          </td>
-        </table>
-        <br>
-        <hr>
+  <hr class="container" aria-hidden="true">
 
-     
-      </td>
-    </tr>
-  </table>
+  <main class="container" role="main">
+    <!-- ===== Education ===== -->
+    <section id="education">
+      <h2>Education</h2>
+      <p>
+        Ph.D., Food and Resource Economics, University of Florida — Gainesville, FL (expected May 2026)<br>
+        M.Sc., Agricultural &amp; Resource Economics, University of Maryland — College Park, MD (Dec 2020)<br>
+        M.Sc., Applied Economics, University of Chile — Santiago, Chile (May 2015)<br>
+        B.Sc., Industrial Engineering, University of Chile — Santiago, Chile (May 2015)
+      </p>
+    </section>
+
+    <!-- ===== Job Market Paper ===== -->
+    <section id="jmp">
+      <h2>Job Market Paper</h2>
+      <p>
+        <a href="https://fbritogonzalez.github.io/">Artificial Intelligence (AI) and Agricultural Employment</a><br>
+        with Gulcan Onel, Jared Gars, and Conner Mullally. Submitted to the <i>American Journal of Agricultural Economics (AJAE)</i>
+      </p>
+
+      <!-- Abstract with Show more/less -->
+      <div id="abstract" class="abstract" aria-live="polite">
+        <p>
+          <i>Abstract.</i> We quantify how artificial intelligence (AI) innovations affect U.S. agricultural employment. Using 2003–2023 U.S. Patent and Trademark Office records, we construct a measure of agriculture’s exposure to AI by classifying AI patents and mapping them to subsectors through Cooperative Patent Classification (CPC) and North American Industry Classification System (NAICS) concordances. A shift–share design with an instrumental variable approach interacts national AI innovation trends with county-level lagged employment shares. Estimates indicate that AI exposure raises employment in crop production (NAICS 111) by 10.6% and in animal production (NAICS 112) by 6.8%, relative to mean employment levels in each subsector. Decomposing AI based on its underlying function reveals heterogeneity in employment effects. Execution-oriented AI (hardware and automation) reduces overall agricultural employment (NAICS 11) by 6.9%, while cognition-oriented AI (decision-support) and perception-oriented AI (sensing) increase employment (4.3% and 6%, respectively). These domain-specific patterns are consistent across crop and animal subsectors, with stronger employment effects in crop agriculture (-12.8% for execution-, 9.1% for cognition-, and 10% for perception-oriented AI) than in animal agriculture (-4.5% for execution-, and 7.8% for perception-oriented AI, respectively). Results show that AI does not uniformly displace farm labor; instead, its effects depend on technological complementarities and task reallocation. By uncovering domain-specific dynamics, this study demonstrates how targeted AI innovations can augment agricultural employment, informing policies that support skill upgrading and diffusion of complementary technologies.
+        </p>
+      </div>
+      <div class="toggle-wrap">
+        <button id="toggle-abstract" class="toggle-link" aria-controls="abstract" aria-expanded="false">Show more</button>
+      </div>
+      <!-- /Abstract with Show more/less -->
+    </section>
+
+    <!-- ===== Research and Work in Progress ===== -->
+    <section id="research">
+      <h2>Research and Work in Progress</h2>
+      <p>
+        <a href="https://scholar.google.cl/citations?view_op=view_citation&hl=en&user=XP7X0IQAAAAJ&citation_for_view=XP7X0IQAAAAJ:u-x6o8ySG0sC">Sensing, Thinking, Doing: AI’s Growing Role on the Farm—and What It Means for Farm Work</a><br>
+        with Gulcan Onel, Jared Gars, and Conner Mullally. <i>Choices</i>, 40(3), 2025.
+      </p>
+      <p>
+        <a>The Role of Agricultural Robotics and the Industry Dependence on the H-2A Temporary Agricultural Work Program</a> with Gulcan Onel, Jared Gars, Conner Mullally.
+      </p>
+      <p>
+        <a>Do Increases in the Minimum Wage Skew Task Demand Toward Automation? Evidence from the H-2A Temporary Agricultural Work Program</a> with Gulcan Onel, Jared Gars, Conner Mullally.
+      </p>
+      <p>
+        <a>Is it time to update the NAWS questionnaire?</a> with Gulcan Onel.
+      </p>
+    </section>
+  </main>
 
   <!-- Show more/less script -->
   <script>
@@ -149,9 +192,7 @@
       // start collapsed
       abstract.classList.add('collapsed');
 
-      // If the content isn't actually overflowing, hide the button
       function updateButtonVisibility() {
-        // temporarily remove collapse to measure true height
         abstract.classList.remove('collapsed');
         var needsToggle = abstract.scrollHeight > 110; // ~ a few lines
         abstract.classList.add('collapsed');
@@ -174,7 +215,6 @@
         }
       });
 
-      // re-check on resize (mobile/desktop changes)
       window.addEventListener('resize', updateButtonVisibility);
     })();
   </script>
