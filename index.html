@@ -19,22 +19,37 @@
   <meta name="robots" content="index, follow, noarchive">
   <meta name="googlebot" content="noarchive">
 
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-  <style>
-  body { background-color:#FFFFFF; color:#222222; }
-  a { color:#1767d0; text-decoration:none; }
-  a:focus, a:hover { color:#f09228; text-decoration:none; }
-  body,td,th { font-family:'Lato', Verdana, Helvetica, sans-serif; font-size:14px; }
-  strong { font-family:'Lato', Verdana, Helvetica, sans-serif; font-size:13px; }
-  heading { display:block; font-family:'Lato', Arial, Helvetica, sans-serif; font-size:24px; font-weight:600; margin:8px 0 12px; }
-  li { color:#f09228; }
-  li span { color:black; }
-  hr { border:0; border-top:1px solid #eee; }
-  img { border-radius:4px; }
-  </style>
 
-  <script type="text/javascript" src="js/hidebib.js"></script>
+<style>
+body { background-color:#FFFFFF; color:#222222; }
+a { color:#1767d0; text-decoration:none; }
+a:focus, a:hover { color:#f09228; text-decoration:none; }
+body,td,th { font-family:'Lato', Verdana, Helvetica, sans-serif; font-size:14px; }
+strong { font-family:'Lato', Verdana, Helvetica, sans-serif; font-size:13px; }
+heading { display:block; font-family:'Lato', Arial, Helvetica, sans-serif; font-size:24px; font-weight:600; margin:8px 0 12px; }
+li { color:#f09228; }
+li span { color:black; }
+hr { border:0; border-top:1px solid #eee; }
+img { border-radius:4px; }
+
+
+/* --- Show more/less styles --- */
+.abstract { position: relative; transition: max-height 0.25s ease-in-out; }
+.abstract.collapsed { max-height: 6.5em; overflow: hidden; }
+.abstract.collapsed::after { /* subtle fade at bottom */
+content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3em;
+background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+pointer-events: none;
+}
+.toggle-link { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: #1767d0; }
+.toggle-link:hover, .toggle-link:focus { color: #f09228; }
+.toggle-wrap { margin-top: 6px; }
+</style>
+
+
+<script type="text/javascript" src="js/hidebib.js"></script>
 </head>
 
 <body>
@@ -77,9 +92,15 @@
                 <p>
                   Brito-Gonzalez, F., Onel, G., Gars, J., &amp; Mullaly, C. (2025). <b>Artificial Intelligence (AI) and Agricultural Employment</b>. Submitted to the <i>American Journal of Agricultural Economics (AJAE)</i>, September 2025.
                 </p>
+                <!-- Abstract with Show more/less -->
+                <div id="abstract" class="abstract" aria-live="polite">
                 <p>
-                  <i>Abstract.</i> We quantify how artificial intelligence (AI) innovations affect U.S. agricultural employment. Using 2003–2023 U.S. Patent and Trademark Office records, we construct a measure of agriculture’s exposure to AI by classifying AI patents and mapping them to subsectors through Cooperative Patent Classification (CPC) and North American Industry Classification System (NAICS) concordances. A shift–share design with an instrumental variable approach interacts national AI innovation trends with county-level lagged employment shares. Estimates indicate that AI exposure raises employment in crop production (NAICS 111) by 10.6% and in animal production (NAICS 112) by 6.8%, relative to mean employment levels in each subsector. Decomposing AI based on its underlying function reveals heterogeneity in employment effects. Execution-oriented AI (hardware and automation) reduces overall agricultural employment (NAICS 11) by 6.9%, while cognition-oriented AI (decision-support) and perception-oriented AI (sensing) increase employment (4.3% and 6%, respectively). These domain-specific patterns are consistent across crop and animal subsectors, with stronger employment effects in crop agriculture (-12.8% for execution-, 9.1% for cognition-, and 10% for perception-oriented AI) than in animal agriculture (-4.5% for execution-, and 7.8% for perception-oriented AI, respectively). Results show that AI does not uniformly displace farm labor; instead, its effects depend on technological complementarities and task reallocation. By uncovering domain-specific dynamics, this study demonstrates how targeted AI innovations can augment agricultural employment, informing policies that support skill upgrading and diffusion of complementary technologies.
+                <i>Abstract.</i> We quantify how artificial intelligence (AI) innovations affect U.S. agricultural employment. Using 2003–2023 U.S. Patent and Trademark Office records, we construct a measure of agriculture’s exposure to AI by classifying AI patents and mapping them to subsectors through Cooperative Patent Classification (CPC) and North American Industry Classification System (NAICS) concordances. A shift–share design with an instrumental variable approach interacts national AI innovation trends with county-level lagged employment shares. Estimates indicate that AI exposure raises employment in crop production (NAICS 111) by 10.6% and in animal production (NAICS 112) by 6.8%, relative to mean employment levels in each subsector. Decomposing AI based on its underlying function reveals heterogeneity in employment effects. Execution-oriented AI (hardware and automation) reduces overall agricultural employment (NAICS 11) by 6.9%, while cognition-oriented AI (decision-support) and perception-oriented AI (sensing) increase employment (4.3% and 6%, respectively). These domain-specific patterns are consistent across crop and animal subsectors, with stronger employment effects in crop agriculture (-12.8% for execution-, 9.1% for cognition-, and 10% for perception-oriented AI) than in animal agriculture (-4.5% for execution-, and 7.8% for perception-oriented AI, respectively). Results show that AI does not uniformly displace farm labor; instead, its effects depend on technological complementarities and task reallocation. By uncovering domain-specific dynamics, this study demonstrates how targeted AI innovations can augment agricultural employment, informing policies that support skill upgrading and diffusion of complementary technologies.
                 </p>
+                </div>
+                <div class="toggle-wrap">
+                <button id="toggle-abstract" class="toggle-link" aria-controls="abstract" aria-expanded="false">Show more</button>
+                </div>
                 
               </td>
             </tr>
