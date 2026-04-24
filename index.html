@@ -153,6 +153,23 @@
       pointer-events: auto;
     }
 
+    /* ===== Project collage: 2-up image grid ===== */
+    .project-collage { margin: 12px 0 24px 0; }
+    .project-collage h3 { margin: 0 0 4px 0; font-size: 16px; }
+    .project-collage .project-desc {
+      margin: 0 0 10px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .collage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 640px) {
+      .collage-grid { grid-template-columns: 1fr; }
+    }
+
     section h2 {
       font-size: 22px;
       font-weight: 700;
@@ -275,42 +292,50 @@
 
       <section id="panel-data" class="tab-panel" role="tabpanel" aria-labelledby="tab-data" hidden>
         <h2>Data Projects</h2>
-        <p>
-          <b>AAEA Visualization Challenge 2026:</b> housing and worksite H-2A spatial distribution and citrus land-use change at parcel level. <i>Example: Highlands County, FL.</i>
-        </p>
-        <figure class="hover-caption">
-          <img src="highlands_citrus_h2a.png"
-               alt="Parcel-level citrus land use with H-2A worksites and housing in Highlands County, FL"
-               loading="lazy">
-          <figcaption>Interactive leaflet over ~150,000 parcels in Highlands County, FL. Orange+citrus coverage derived from USDA Cropland Data Layer (CDL, 2023, classes 72 and 212) using a per-parcel tile-rasterization pipeline. Five toggleable land-cover categories per parcel: oranges+citrus, other crop, forest/wetlands, developed, pasture. H-2A worksite and housing addresses from DOL Office of Foreign Labor Certification 2026 disclosures, geocoded at street level. Worksite markers sized by workers allocated proportionally to grove acres; housing markers sized by max occupancy.</figcaption>
-        </figure>
 
-        <figure class="hover-caption">
-          <img src="parcel_popup_example.png"
-               alt="Parcel popup showing 2008 and 2023 citrus acreage and bivariate class"
-               loading="lazy">
-          <figcaption>Click any parcel for its full 2008 to 2023 trajectory. Example from Martin County: a 304-acre grove that lost 86% of its citrus by 2023 is still classed as stable-high on the log-acres axis, illustrating why retention ratios are the right axis for the farmland-loss narrative.</figcaption>
-        </figure>
+        <div class="project-collage">
+          <h3>AAEA Visualization Challenge 2026</h3>
+          <p class="project-desc">
+            Housing and worksite H-2A spatial distribution and citrus land-use change at parcel level. <i>Example: Highlands County, FL.</i> Hover an image for methodology details.
+          </p>
+          <div class="collage-grid">
+            <figure class="hover-caption">
+              <img src="highlands_citrus_h2a.png"
+                   alt="Parcel-level citrus land use with H-2A worksites and housing in Highlands County, FL"
+                   loading="lazy">
+              <figcaption>Interactive leaflet over ~150,000 parcels in Highlands County, FL. Orange+citrus coverage from USDA CDL (2023, classes 72 and 212) via a per-parcel tile-rasterization pipeline. Five land-cover categories per parcel. H-2A worksite and housing addresses from DOL OFLC 2026 disclosures, geocoded at street level. Worksite markers sized by workers allocated proportionally to grove acres; housing markers by max occupancy.</figcaption>
+            </figure>
+            <figure class="hover-caption">
+              <img src="parcel_popup_example.png"
+                   alt="Parcel popup showing 2008 and 2023 citrus acreage and bivariate class"
+                   loading="lazy">
+              <figcaption>Click any parcel for its 2008 to 2023 trajectory. Example from Martin County: a 304-acre grove that lost 86% of its citrus by 2023 is still classed as stable-high on a log-acres axis, illustrating why retention ratios are the right axis for the farmland-loss narrative.</figcaption>
+            </figure>
+          </div>
+        </div>
 
         <hr aria-hidden="true" style="margin:20px 0;">
 
-        <p>
-          <b>LaBOR: Labor and Business Operation Risk</b>
-        </p>
-
-        <figure class="hover-caption">
-          <img src="labor_simulator.png"
-               alt="LaBOR simulator screenshot"
-               loading="lazy">
-          <figcaption>Interactive decision-support tool estimating the net present value of alternative H-2A hiring strategies (direct hiring vs. Farm Labor Contractor) relative to domestic workers. User-adjustable labor shortage, wage growth, housing cost, and weighted average cost of capital. Includes sensitivity analysis and Monte Carlo simulation over the selected policy scenario.</figcaption>
-        </figure>
-
-        <figure class="hover-caption">
-          <img src="labor_policy_impact.png"
-               alt="LaBOR policy impact analysis: NPV across policy scenarios"
-               loading="lazy">
-          <figcaption>Policy Impact Analysis view: net present value under alternative policy scenarios (no change, AEWR growth capped, E-Verify implemented, H-2A mobility allowed, all policies combined), for both direct hiring and Farm Labor Contractor paths.</figcaption>
-        </figure>
+        <div class="project-collage">
+          <h3>LaBOR: Labor and Business Operation Risk</h3>
+          <p class="project-desc">
+            Interactive decision-support tool estimating the net present value of alternative H-2A hiring strategies (direct hiring vs. Farm Labor Contractor) relative to domestic workers. Hover an image for details.
+          </p>
+          <div class="collage-grid">
+            <figure class="hover-caption">
+              <img src="labor_simulator.png"
+                   alt="LaBOR simulator screenshot"
+                   loading="lazy">
+              <figcaption>Simulation Results view: baseline vs. selected policy NPV for direct hiring and FLC, plus Monte Carlo cumulative distributions over user-adjustable inputs (labor shortage, domestic wage growth, H-2A wage growth, housing cost, WACC).</figcaption>
+            </figure>
+            <figure class="hover-caption">
+              <img src="labor_policy_impact.png"
+                   alt="LaBOR policy impact analysis: NPV across policy scenarios"
+                   loading="lazy">
+              <figcaption>Policy Impact view: net present value under alternative policy scenarios (no change, AEWR growth capped, E-Verify implemented, H-2A mobility allowed, all policies combined) for both direct hiring and Farm Labor Contractor paths.</figcaption>
+            </figure>
+          </div>
+        </div>
       </section>
     </div>
   </main>
