@@ -192,6 +192,7 @@
         <button role="tab" id="tab-education" aria-controls="panel-education" aria-selected="true">Education</button>
         <button role="tab" id="tab-jmp" aria-controls="panel-jmp" aria-selected="false" tabindex="-1">Job Market Paper</button>
         <button role="tab" id="tab-research" aria-controls="panel-research" aria-selected="false" tabindex="-1">Research &amp; WIP</button>
+        <button role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false" tabindex="-1">Data Projects</button>
       </div>
 
       <!-- Panels -->
@@ -235,6 +236,24 @@
         </p>
         <p>
           <a>Is it time to update the NAWS questionnaire?</a> with Gulcan Onel.
+        </p>
+      </section>
+
+      <section id="panel-data" class="tab-panel" role="tabpanel" aria-labelledby="tab-data" hidden>
+        <h2>Data Projects</h2>
+        <p>
+          <b>AAEA Visualization Challenge 2026:</b> housing and worksite H-2A spatial distribution and citrus land-use change at parcel level. <i>Example: Highlands County, FL.</i>
+        </p>
+        <p>
+          <a href="highlands_citrus_h2a.png" target="_blank">
+            <img src="highlands_citrus_h2a.png"
+                 alt="Parcel-level citrus land use with H-2A worksites and housing in Highlands County, FL"
+                 style="max-width:100%;height:auto;border:1px solid #eee;border-radius:4px;"
+                 loading="lazy">
+          </a>
+        </p>
+        <p style="font-size:13px;color:#666;">
+          Interactive leaflet over ~150,000 parcels in Highlands County, FL. Orange+citrus coverage derived from USDA Cropland Data Layer (CDL, 2023, classes 72 and 212) using a per-parcel tile-rasterization pipeline. Five toggleable land-cover categories per parcel: oranges+citrus, other crop, forest/wetlands, developed, pasture. H-2A worksite and housing addresses from DOL Office of Foreign Labor Certification 2026 disclosures, geocoded at street level. Worksite markers sized by workers allocated proportionally to grove acres; housing markers sized by max occupancy.
         </p>
       </section>
     </div>
@@ -288,7 +307,7 @@
       // Deep link: #education, #jmp, #research
       function initFromHash() {
         var hash = (location.hash || '').replace('#','');
-        var map = { education: 'tab-education', jmp: 'tab-jmp', research: 'tab-research' };
+        var map = { education: 'tab-education', jmp: 'tab-jmp', research: 'tab-research', data: 'tab-data' };
         var tabId = map[hash];
         if (tabId) {
           var t = document.getElementById(tabId);
